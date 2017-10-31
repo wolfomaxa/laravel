@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', ['as' => 'news', 'uses' => 'NewsController@index']);
+Route::post('/search', ['as' => 'news.search', 'uses' => 'NewsController@search']);
+Route::get('/{alias}', ['as' => 'get-news', 'uses' => 'NewsController@show']);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

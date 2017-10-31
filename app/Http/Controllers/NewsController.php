@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Authors;
+use App\News;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -11,11 +13,27 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(News $newsModel, Authors $authorsModels)
     {
-        //
+        $news_list = $newsModel->getNews();
+        $authors_list = $authorsModels->getAuthors();
+        return view('news.index', compact('news_list','authors_list'));
     }
 
+    /**
+     * @param $alias
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function show($alias)
+    {
+        $news =  \App\News::where('alias', '=', $alias)->firstOrFail();
+        return view('news.show', compact('news'));
+    }
+    public function search(News $newsModel, Request $request)
+    {
+
+        dd($request->all());
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +61,10 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.

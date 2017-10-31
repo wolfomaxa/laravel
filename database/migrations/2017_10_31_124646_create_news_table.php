@@ -13,8 +13,15 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('news', function(Blueprint $table)
+        {
             $table->increments('id');
+            $table->string('title')->nullable();
+            $table->string('alias')->unique();
+            $table->text('annot')->nullable();
+            $table->integer('author_id');
+            $table->text('bodytext')->nullable();
+            $table->timestamp('date');
             $table->timestamps();
         });
     }
