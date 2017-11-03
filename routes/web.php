@@ -20,7 +20,7 @@ Route::get('/authors', ['as' => 'authors.search', 'uses' => 'AuthorsController@g
 //Route::get('/city', ['as' => 'city', 'uses' => 'CityController@index']);
 //Route::get('/autocomplete', 'CityController@autocomplete');
 Route::get('/city',array('as'=>'autocomplete','uses'=>'CityController@index'));
-Route::get('sitemap', 'SitemapController@index');
+Route::get('/sitemap', 'NewsController@GenerateSitemap');
 Route::get('/searchajax',array('as'=>'searchajax','uses'=>'CityController@autoComplete'));
 Route::get('/dublearray', ['as' => 'news.dublearray', 'uses' => 'NewsController@doubleArray']);
 Route::get('/news-this-week', ['as' => 'news.now_week', 'uses' => 'NewsController@getNewsThisWeek']);

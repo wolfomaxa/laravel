@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Authors;
 use App\News;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
 
 class NewsController extends Controller
 {
@@ -20,7 +20,9 @@ class NewsController extends Controller
         $authors_list = $authorsModels->getAuthors();
         return view('news.index', compact('news_list','authors_list'));
     }
-
+   public function GenerateSitemap(News $newsModel, Authors $authorsModels){
+       File::put('/1.txt', 'file contents');
+   }
     /**
      * @param $alias
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
