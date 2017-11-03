@@ -22,8 +22,8 @@ class NewsController extends Controller
         return view('news.index', compact('news_list','authors_list'));
     }
    public function GenerateSitemap(News $newsModel, Authors $authorsModels){
-       $file_contents ='ыыыыыыы';
-       Storage::put('/2.txt', 'ыыыыччч' );
+
+       Storage::put('/2.txt', 'fileыыыы contents');
    }
     /**
      * @param $alias
