@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Authors;
 use App\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+
 
 class NewsController extends Controller
 {
@@ -21,7 +22,8 @@ class NewsController extends Controller
         return view('news.index', compact('news_list','authors_list'));
     }
    public function GenerateSitemap(News $newsModel, Authors $authorsModels){
-       File::put('/1.txt', 'file contents');
+       $file_contents ='ыыыыыыы';
+       Storage::put('/2.txt', 'ыыыыччч' );
    }
     /**
      * @param $alias
