@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Authors;
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Builder\Class_;
 
 
 class NewsController extends Controller
@@ -21,13 +23,32 @@ class NewsController extends Controller
         $authors_list = $authorsModels->getAuthors();
         return view('news.index', compact('news_list','authors_list'));
     }
-   public function GenerateSitemap(News $newsModel, Authors $authorsModels){
-       $contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+   public function GenerateSitemap(News $newsModel, Request $request){
+        $content_begin ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
 <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"
         xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\">";
-//       dd($contents);
-       Storage::put('/file.xml', $contents);
+        $content_end = "</urlset>";
+//        $content =
+       $domain = $request->getHttpHost();
+       $news_list = $newsModel->getNews();
+       $content ='';
+       foreach ($news_list as $news)
+       {
+           $content .= ' <url>
+    <loc>'.$domain.'/'.$news->alias. '</loc>
+    <news:news>
+      <news:publication>
+       <news:name>Известия</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+<news:publication_date>
+    '.$news->date.'</news:publication_date>
+      <news:title>'.$news->title.'</news:title></news:news></url>';
 
+       }
+
+       File::put('sitemap.xml', $content_begin.$content.$content_end);
+       return redirect('/sitemap.xml');
    }
     /**
      * @param $alias
@@ -167,3 +188,30 @@ class NewsController extends Controller
         //
     }
 }
+interface I{
+    function run($b, $c);
+}
+class Foo implements I {
+    public $a;
+    public $b;
+    public $c;
+
+    public function __construct() {
+        $this->a = 10;
+    }
+    public function run($b, $c){
+        $this->b = $b;
+        $this->c = $c;
+        return $this->a + $this->b + $this->c;
+    }
+
+}
+class Two extends Foo {
+    public $d;
+    public function run($b, $c, $d=null){
+        $this->d = $d;
+        return $this->d + parent::run($b, $c);
+    }
+}
+
+

@@ -54,6 +54,7 @@
                             <li><a href="/authors">Authors has news</a></li>
                             <li><a href="/dublearray">Double array</a></li>
                             <li><a href="/city">City</a></li>
+                            <li><a href="/sitemap">Generated sitemap</a></li>
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else

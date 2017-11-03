@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-	<url>
-	<loc>http://laravel.local</loc>
-		<priority>1.0</priority>
-		<lastmod>2016-11-18T10:30:00+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
-	<loc>http://sitename.ru/Черный космос/chernyy-kosmos</loc>
-		<priority>0.5</priority>
-		<lastmod>2017-11-03T13:17:33+00:00</lastmod>
-		<changefreq>yearly</changefreq>
-	</url>
-	<url>
-	<loc>http://sitename.ru/Фальшивые небеса/falshivye-nebesa</loc>
-		<priority>0.5</priority>
-		<lastmod>2017-11-03T13:17:33+00:00</lastmod>
-		<changefreq>yearly</changefreq>
-	</url>
-	<url>
-	<loc>http://sitename.ru/Чемульпо/chemulpo</loc>
-		<priority>0.5</priority>
-		<lastmod>2017-11-03T13:17:33+00:00</lastmod>
-		<changefreq>yearly</changefreq>
-	</url>
-</urlset>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"> <url>
+    <loc>laravel.local/chernyy-kosmos</loc>
+    <news:news>
+      <news:publication>
+       <news:name>Известия</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+<news:publication_date>
+    2017-10-28 17:16:42</news:publication_date>
+      <news:title>Черный космос</news:title></news:news></url> <url>
+    <loc>laravel.local/falshivye-nebesa</loc>
+    <news:news>
+      <news:publication>
+       <news:name>Известия</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+<news:publication_date>
+    2017-11-01 17:16:42</news:publication_date>
+      <news:title>Фальшивые небеса</news:title></news:news></url> <url>
+    <loc>laravel.local/chemulpo</loc>
+    <news:news>
+      <news:publication>
+       <news:name>Известия</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+<news:publication_date>
+    2017-10-30 17:16:42</news:publication_date>
+      <news:title>Чемульпо</news:title></news:news></url></urlset>
