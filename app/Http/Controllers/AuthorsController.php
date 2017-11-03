@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Authors;
+use App\News;
+use DB;
 
 class AuthorsController extends Controller
 {
@@ -14,6 +17,13 @@ class AuthorsController extends Controller
     public function index()
     {
         //
+    }
+    public function getAuthorsHaveNews(Authors $authorsModel)
+    {
+
+
+        $authors_list_news = $authorsModel->getAuthorsHaveNews();
+        return view('authors.index', compact('authors_list_news'));
     }
 
     /**

@@ -9,19 +9,33 @@
                     <h1>News</h1>
                 </div>
                 {!! Form::open(['route' => 'news.search']) !!}
-                    <input type="text" name="search_phtas" placeholder="поиск" class="input" />
 
-                    <select name="select2" name="authors[]">
-                        <option selected="selected">Выберите автора</option>
+                <div class="form-group">
+                    {!! Form::label('Фраза') !!}
+                    {!! Form::text('phrase', null, ['class'=>'form-control'] ) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('Выберите автора') !!}
+                    <select name="select2" name="authors[]" class="form-control">
+                        <option disabled selected>Выберите автора</option>
                         @foreach ($authors_list as $authors)
-                            <option>{{$authors->authors}}</option>
+                            <option value="{{$authors->id}}">{{$authors->authors}}</option>
                         @endforeach
-                        </select>
-                    <input type="checkbox" name="exact_phrase" value="Yes" >точная фраза?<Br>
-                    <input type="date" name="created">
-                    <input type="date" name="finished">
-                    <input type="submit" name="" value="поиск" class="submit" />
+                    </select>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('точная фраза?  ') !!}
+                    {!! Form::checkbox('corectly', null, false) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('Поиск по дате') !!}
 
+                    <input type="date" name="created" class="form-control" value="">
+                </div>
+
+                <div class="form-group">
+                    {!! Form::submit('Поиск', ['class'=>'btn btn-primary']) !!}
+                </div>
 
 
                 {!! Form::close()!!}
@@ -33,10 +47,11 @@
                     @endif
 
                         @foreach ($news_list as $news)
+
                             <article>
                                 <h2>{{ $news->title }}</h2>
-                                <p>{{  str_limit($news->content, 18, ' (...)')}}</p>
-                                <a href='/{{ $news->alias }}/'>Читать далее...</a>
+                                {!! $news->short_bodytext !!}
+                                <a href='/news/{{ $news->alias }}/'>Читать далее...</a>
                             </article>
                         @endforeach
 
