@@ -8,6 +8,10 @@
                 <div class="panel-heading">
                     <h1>News</h1>
                 </div>
+                <div class="panel-heading">
+                переменая с 10 заднания:
+                {!! $s !!}
+            </div>
                 {!! Form::open(['route' => 'news.search']) !!}
 
                 <div class="form-group">

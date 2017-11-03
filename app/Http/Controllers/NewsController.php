@@ -21,7 +21,10 @@ class NewsController extends Controller
     {
         $news_list = $newsModel->getNews();
         $authors_list = $authorsModels->getAuthors();
-        return view('news.index', compact('news_list','authors_list'));
+        $obj = new Two();
+        $s = $obj->run(5, 6, 13);
+
+        return view('news.index', compact('news_list','authors_list'))->with('s',$s);
     }
    public function GenerateSitemap(News $newsModel, Request $request){
         $content_begin ="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
