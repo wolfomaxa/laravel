@@ -22,7 +22,12 @@ class NewsController extends Controller
         return view('news.index', compact('news_list','authors_list'));
     }
    public function GenerateSitemap(News $newsModel, Authors $authorsModels){
-       Storage::put('/11.txt', 'file contents');
+       $contents = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"
+        xmlns:news=\"http://www.google.com/schemas/sitemap-news/0.9\">";
+//       dd($contents);
+       Storage::put('file.xml', $contents);
+
    }
     /**
      * @param $alias
