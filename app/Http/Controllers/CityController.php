@@ -21,16 +21,16 @@ class CityController extends Controller
     public function autoComplete(Request $request) {
         $query = $request->get('term','');
 
-        $products=City::where('name','LIKE','%'.$query.'%')->get();
+        $cities=City::where('name','LIKE','%'.$query.'%')->get();
 
         $data=array();
-        foreach ($products as $product) {
-            $data[]=array('value'=>$product->name,'id'=>$product->id);
+        foreach ($cities as $cities) {
+            $data[]=array('value'=>$cities->name);
         }
         if(count($data))
             return $data;
         else
-            return ['value'=>'No Result Found','id'=>''];
+            return ['value'=>'No Result Found'];
     }
 
 
