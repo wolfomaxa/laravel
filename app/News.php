@@ -49,8 +49,8 @@ class News extends Model
 
 public function getNewsThisWeek()
 {
-    $week_begin = Carbon\Carbon::now()->subDay()->startOfWeek()->toDateString();
-    $week_end = Carbon\Carbon::now()->subDay()->endOfWeek()->toDateString();
+    $week_begin = Carbon\Carbon::now()->startOfWeek()->toDateString();
+    $week_end = Carbon\Carbon::now()->endOfWeek()->toDateString();
     $news_list = News::whereBetween( DB::raw('date(date)'), [$week_begin, $week_end])->get();
     return $news_list;
 }
