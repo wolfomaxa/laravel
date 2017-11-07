@@ -50,6 +50,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
+                            <li><a href="/">Home</a></li>
                             <li><a href="/news-this-week">News this week</a></li>
                             <li><a href="/authors">Authors has news</a></li>
                             <li><a href="/dublearray">Double array</a></li>
