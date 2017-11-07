@@ -48,14 +48,15 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="/">Home</a></li>
+                      <li><a href="/">Home</a></li>
                             <li><a href="/news-this-week">News this week</a></li>
                             <li><a href="/authors">Authors has news</a></li>
                             <li><a href="/dublearray">Double array</a></li>
                             <li><a href="/city">City</a></li>
                             <li><a href="/sitemap">Generated sitemap</a></li>
+                        <!-- Authentication Links -->
+                        @guest
+                          
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
