@@ -109,7 +109,7 @@ class NewsController extends Controller
         if ($request->phrase !='' and empty($request->corectly)){
         $search1 =  $newsModel->Search_phrase($request->phrase)->toArray();
             }
-            else
+        if ($request->phrase !='' and !empty($request->corectly))
             {
         $search1 =  $newsModel->Search_phrase_corectly($request->phrase)->toArray();
             }
